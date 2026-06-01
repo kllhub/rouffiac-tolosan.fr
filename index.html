@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rouffiac-Tolosan — Plateforme de tests</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1c2b44;
+      --terracotta: #b05232;
+      --gold: #c9a96e;
+      --cream: #f7f4ef;
+      --stone: #e8e3da;
+      --text: #2c2c2a;
+      --text-light: #6b6460;
+      --white: #ffffff;
+      --warning: #7a4f1a;
+      --warning-bg: #fdf3e3;
+      --warning-border: #e6c98a;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── BANNER TEST ────────────────────────── */
+    .test-banner {
+      background: var(--warning-bg);
+      border-bottom: 1px solid var(--warning-border);
+      padding: 8px 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .test-banner svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--warning);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .test-banner p {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--warning);
+      letter-spacing: 0.04em;
+    }
+
+    .test-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--warning);
+      color: var(--white);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    /* ─── HEADER ─────────────────────────────── */
+    header {
+      background: var(--navy);
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .header-logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
+    }
+
+    .header-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .header-name .main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+
+    .header-name .sub {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    /* ─── HERO ───────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(176,82,50,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 1rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-divider span {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .hero-divider strong {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 400px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── MAIN ───────────────────────────────── */
+    main {
+      flex: 1;
+      padding: 3.5rem 2rem 4rem;
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--stone);
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .module-card {
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .module-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(28,43,68,0.12);
+      border-color: rgba(201,169,110,0.4);
+    }
+
+    .module-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(28,43,68,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .module-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--navy);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .module-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+    }
+
+    .module-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-light);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .module-link-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--terracotta);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .module-link-label svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.2s;
+    }
+
+    .module-card:hover .module-link-label svg {
+      transform: translateX(3px);
+    }
+
+    /* ─── FOOTER ─────────────────────────────── */
+    footer {
+      background: var(--navy);
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    footer p {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.04em;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    footer a:hover { opacity: 0.7; }
+
+    @media (max-width: 600px) {
+      header { padding: 0 1.25rem; }
+      nav { display: none; }
+      .hero { padding: 3rem 1.25rem; }
+      main { padding: 2.5rem 1.25rem 3rem; }
+      footer { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bandeau test -->
+  <div class="test-banner">
+    <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span class="test-badge">Tests</span>
+    <p>Plateforme de tests — Ces applications sont en cours de développement et ne sont pas encore en production.</p>
+  </div>
+
+  <header>
+    <a class="header-brand" href="#">
+      <img class="header-logo" src="logo-rouffiac.png" alt="Logo Rouffiac-Tolosan" />
+      <div class="header-name">
+        <span class="main">Rouffiac-Tolosan</span>
+        <span class="sub">Portail numérique</span>
+      </div>
+    </a>
+  </header>
+
+  <section class="hero">
+    <img class="hero-logo" src="logo-rouffiac.png" alt="Logo Rouffiac-Tolosan" />
+    <h1>Rouffiac-Tolosan</h1>
+    <div class="hero-divider">
+      <span></span>
+      <strong>Haute-Garonne · 31180</strong>
+      <span></span>
+    </div>
+    <p>Accédez aux outils numériques de la mairie — phase de tests</p>
+  </section>
+
+  <main>
+    <p class="section-label">Applications en test</p>
+
+    <div class="modules-grid">
+
+      <!-- Ateliers -->
+      <a class="module-card" href="https://rouffiac-ateliers.fly.dev/login" target="_blank" rel="noopener">
+        <div class="module-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="module-title">Ateliers</div>
+        <div class="module-desc">Gestion des demandes aux ateliers municipaux — réparations, prêt de matériel et équipements</div>
+        <div class="module-link-label">
+          Accéder
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- Pointage ALAE -->
+      <a class="module-card" href="https://alae-pointage.fly.dev/admin" target="_blank" rel="noopener">
+        <div class="module-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <div class="module-title">Pointage ALAE</div>
+        <div class="module-desc">Suivi de présence de l'accueil de loisirs périscolaire</div>
+        <div class="module-link-label">
+          Accéder
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- Horus -->
+      <a class="module-card" href="https://horus-rouffiac.fly.dev/" target="_blank" rel="noopener">
+        <div class="module-icon">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="module-title">Horus</div>
+        <div class="module-desc">Application de vigilance citoyenne — signalement et suivi des situations sur le territoire</div>
+        <div class="module-link-label">
+          Accéder
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Mairie de Rouffiac-Tolosan &mdash; 31180 Haute-Garonne</p>
+    <p><a href="mailto:k.lahtil@mairiederouffiac.fr">k.lahtil@mairiederouffiac.fr</a></p>
+  </footer>
+
+</body>
+</html>
